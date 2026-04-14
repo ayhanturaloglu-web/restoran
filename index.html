@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Restoran Menyu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        .kassa {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #netice {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="kassa">
+        <h3>Restoran Menyusu</h3>
+
+        <label>Yemək seçin:</label>
+        <select id="yemek">
+            <option value="2.90">Ət Dönər</option>
+            <option value="2.50">Toyuq Dönər - 2.50 AZN</option>
+            <option value="4">Toyuq pilov - 4 AZN</option>
+            <option value="5">İskəndər - 5 AZN</option>
+            <option value="3.50">Hatay dürüm - 3.50 AZN</option>
+            <option value="14">Kabab 2 nəfərlik set - 14 AZN</option>
+            <option value="3">Çay seti - 3 AZN</option>
+        </select>
+
+        <label>Neçə ədəd?:</label>
+        <input type="text" id="say" value="1">
+
+        <label>Xidmət haqqı (%):</label>
+        <input type="text" id="faiz" value="10">
+
+        <button onclick="hesabla()">Hesabla</button>
+
+        <div id="netice"></div>
+    </div>
+
+    <script>
+        function hesabla() {
+        
+            qiymet = document.getElementById("yemek").value;
+            miqdar = document.getElementById("say").value;
+            xidmetFaizi = document.getElementById("faiz").value;
+
+            esasMebleg = qiymet * miqdar;
+            servisHaqqi = (esasMebleg * xidmetFaizi) / 100;
+            toplam = esasMebleg + servisHaqqi;
+
+            document.getElementById("netice").innerHTML =
+                "Yemək pulu: " + esasMebleg + " AZN <br>" +
+                "Xidmət haqqı: " + servisHaqqi + " AZN <br>" +
+                "Ümumi Borc: " + toplam + " AZN";
+        }
+    </script>
+
+</body>
+
+</html>
